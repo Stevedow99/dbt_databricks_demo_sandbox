@@ -10,13 +10,29 @@ with order_item as (
     select * from {{ ref('order_items') }}
 
 ),
+
 part_supplier as (
     
     select * from {{ ref('part_suppliers') }}
 
 ),
+
+part_supplier as (
+    
+    select * from {{ ref('part_suppliers') }}
+
+),
+
+dim_customers as (
+    
+    select * from {{ ref('dim_customers') }}
+
+),
+
+
 final as (
     select 
+        dim_customers.region as region_name,
         order_item.order_item_key,
         order_item.order_key,
         order_item.order_date,
@@ -50,6 +66,8 @@ final as (
         inner join part_supplier
             on order_item.part_key = part_supplier.part_key and
                 order_item.supplier_key = part_supplier.supplier_key
+        inner join dim_customers
+            on order_item.customer_key = dim_customers.customer_key
 )
 select 
     *

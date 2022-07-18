@@ -1,18 +1,15 @@
 version: 2
 
 exposures:
-  - name: yearly_part_rollup
+  - name: company_sales_dashboard
     description: |
-      # An h1 header
+      # Company Sales Dashboard
       ============
 
-      Paragraphs are separated by a blank line.
-
-      2nd paragraph. *Italic*, **bold**, and `monospace`
-      Itemized lists look like:
-        * this one
-        * that one
-        * the other one
+      **The goal of the company sales dashboard is to do the following**
+        * track monthly sales
+        * understand company performance
+        * find outlier months
     
     # type could be {dashboard, notebook, analysis, ml, application}
     type: dashboard 
@@ -30,4 +27,4 @@ exposures:
     
     # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAGs
     depends_on:
-      - ref('agg_ship_modes_dynamic_pivot')
+      - ref('monthly_gross_revenue')
