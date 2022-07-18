@@ -4,7 +4,8 @@ exposures:
   - name: company_sales_dashboard
     description: |
       # Company Sales Dashboard
-      ============
+
+      ___
 
       **The goal of the company sales dashboard is to do the following**
         * track monthly sales
