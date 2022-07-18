@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: monthly_gross_revenue
+    description: '{{ doc("monthly_gross_revenue_desc") }}'
+    columns:
+      - name: order_month
+        description: The month the order was placed
+      - name: gross_revenue
+        description: the gross revenue generated for the given line item
+    #   - name: region
+    #     description: region name
+    #     tests:
+    #       - accepted_values:
+    #           values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
