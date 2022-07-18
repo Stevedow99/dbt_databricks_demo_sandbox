@@ -2,12 +2,14 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'tpch'
+name: 'sample_demo'
 version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'tpch'
+profile: 'sample_demo'
+
+
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -26,13 +28,13 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
     - "dbt_packages"
 
-on-run-start:
-  - "alter warehouse transforming set warehouse_size=small;"
+# on-run-start:
+#   - "alter warehouse transforming set warehouse_size=small;"
   # - '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
 
-on-run-end:
-  - "alter warehouse transforming set warehouse_size=xsmall;"
-  - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
+# on-run-end:
+#   - "alter warehouse transforming set warehouse_size=xsmall;"
+#   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
 vars:
   start_date: '1999-01-01'
@@ -44,18 +46,25 @@ vars:
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
+
+
+# my models folder
 models:
-  tpch:
+
+  # setting my project name here
+  sample_demo:
+
+    # my staging models/staging folder
     staging:
       +materialized: view
+      +schema: staging
 
     marts:
       core:
-        materialized: table
-  
-  snowflake_spend:
-    enabled: true
-      
+        +materialized: table
+        +schema: core_analytics
+
+    
 seeds:
   tpch:
     snowflake_contract_rates:
