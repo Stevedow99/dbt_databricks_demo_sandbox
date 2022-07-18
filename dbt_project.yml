@@ -65,6 +65,9 @@ models:
       core:
         +materialized: table
         +schema: core_analytics
+      aggregates:
+        +materialized: table
+        +schema: aggregate_tables
 
     
 seeds:
