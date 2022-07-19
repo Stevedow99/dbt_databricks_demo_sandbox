@@ -3,6 +3,8 @@ version: 2
 models:
   - name: monthly_gross_revenue
     description: '{{ doc("monthly_gross_revenue_desc") }}'
+    config:
+      tags: ['finance', 'RevOps']
     columns:
       - name: order_month
         description: The month the order was placed
