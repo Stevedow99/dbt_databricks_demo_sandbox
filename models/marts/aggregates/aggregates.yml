@@ -9,7 +9,7 @@ models:
       - name: order_month
         description: The month the order was placed
         tests:
-          - unique
+          - not_null
 
 
       - name: gross_revenue
