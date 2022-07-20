@@ -8,10 +8,9 @@ models:
     columns:
       - name: order_month
         description: The month the order was placed
+        tests:
+          - unique
+
+
       - name: gross_revenue
         description: the gross revenue generated for the given line item
-    #   - name: region
-    #     description: region name
-    #     tests:
-    #       - accepted_values:
-    #           values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
