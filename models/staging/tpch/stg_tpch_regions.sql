@@ -1,18 +1,18 @@
-with source as (
+-- with source as (
 
-    select * from {{ source('tpch', 'region') }}
+--     select * from {{ source('tpch', 'region') }}
 
-),
+-- ),
 
-renamed as (
+-- renamed as (
 
-    select
-        r_regionkey as region_key,
-        r_name as name,
-        r_comment as comment
+--     select
+--         r_regionkey as region_key,
+--         r_name as name,
+--         r_comment as comment
 
-    from source
+--     from source
 
-)
+-- )
 
-select * from renamed
+-- select * from renamed
