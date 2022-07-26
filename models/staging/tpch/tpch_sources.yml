@@ -4,10 +4,10 @@ version: 2
 sources:
   - name: tpch
     description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
-    database: steve_d_raw_data
-    schema: tpch_data
+    schema: steve_d_raw_data
     tables:
       - name: orders
+        identifier: tchp__orders
         description: main order tracking table
         freshness: # make this a warning as this is static data
           warn_after: {count: 6, period: hour}
@@ -43,6 +43,7 @@ sources:
             description: '{{ doc("comment") }}'
           
       - name: customer
+        identifier: tchp__customer
         description: main customer table
         columns:
           - name: c_custkey
@@ -68,6 +69,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: lineitem
+        identifier: tchp__lineitem
         description: main lineitem table
         columns:
           - name: l_orderkey
@@ -116,6 +118,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: nation
+        identifier: tchp__nation
         description: nation mapping
         columns:
           - name: n_nationkey
@@ -137,6 +140,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: part
+        identifier: tchp__part
         description: main part table
         columns:
           - name: p_partkey
@@ -164,6 +168,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: partsupp
+        identifier: tchp__partsupp
         description: main part supplier table
         columns:
           - name: ps_partkey
@@ -186,6 +191,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: region
+        identifier: tchp__region
         description: region mapping
         columns:
           - name: r_regionkey
@@ -201,6 +207,7 @@ sources:
             description: '{{ doc("comment") }}'
 
       - name: supplier
+        identifier: tchp__supplier
         description: main supplier table
         columns:
           - name: s_suppkey
