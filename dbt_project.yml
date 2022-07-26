@@ -7,7 +7,7 @@ version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'sample_demo'
+profile: 'sample-dbt-databricks-project'
 
 
 # These configurations specify where dbt should look for different types of files.
@@ -54,7 +54,7 @@ vars:
 models:
 
   # setting my project name here
-  sample_demo:
+  sample-dbt-databricks-project:
 
     # my staging models/staging folder
     staging:
