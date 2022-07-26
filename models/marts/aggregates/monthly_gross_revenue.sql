@@ -7,3 +7,5 @@ from {{ ref('fct_order_items') }}
         order_month
     order by 
         order_month
+
+-- some comments for testing
