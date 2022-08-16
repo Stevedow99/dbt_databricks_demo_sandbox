@@ -54,7 +54,7 @@ vars:
 models:
 
   # setting my project name here
-  sample-dbt-databricks-project:
+  sample_demo:
 
     # my staging models/staging folder
     staging:
@@ -71,8 +71,8 @@ models:
 
     
 seeds:
-  tpch:
-    snowflake_contract_rates:
-      +column_types:
-        effective_date: DATE
-        rate: NUMBER   
+  sample_demo:
+      +pre-hook: ["USE CATALOG external_sa_tables","{{ truncate_table_if_exists() }}", "DROP TABLE IF EXISTS {{ this }}"]
+      +schema: "steve_d_external_tables_sandbox"
+      +file_format: delta
+      +location_root: s3://steve-d-databricks-demo-mount/seeds
