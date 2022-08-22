@@ -24,13 +24,13 @@
 
         {% set returned_results = run_query(if_table_exists_query).columns[0].values()[0] %}
 
-        {% set did_command_execute = "coommand did execute" %}
+        {% set was_there_an_execute = True %}
 
     {% else %}
 
         {% set returned_results = 0 %}
 
-        {% set did_command_execute = "coommand did not execute" %}
+        {% set was_there_an_execute = False %}
 
     {% endif %}
 
@@ -38,9 +38,11 @@
     {# if the object exists then we truncate it, if not we do nothing #}
     {#########################################################################}
 
-    {% if returned_results >= 1 %}
+    {% if returned_results >= 1 and was_there_an_execute == True %}
 
-        {{ log("Table exists, therefore truncating it" ~ if_table_exists_query ~ returned_results ~ did_command_execute, info=True) }}
+        {{ log("Running truncate_table_if_exists macro", info=True) }}
+
+        {{ log("Table exists, therefore truncating it", info=True) }}
 
          {% set trunc_table_query %}
 
@@ -50,9 +52,15 @@
 
         {% do run_query(trunc_table_query) %}
 
+    {% elif returned_results <= 0 and was_there_an_execute == True %}
+
+         {{ log("Running truncate_table_if_exists macro", info=True) }}
+
+         {{ log("Table does not exists, no action needed", info=True) }}
+
     {% else %}
 
-         {{ log("Table does not exists, no action needed" ~ if_table_exists_query ~ returned_results ~ did_command_execute, info=True) }}
+        {{ log("truncate_table_if_exists was not run, just parsing", info=True) }}
     
     {% endif %}
 
