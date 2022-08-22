@@ -75,7 +75,7 @@ clean-targets:
     
 seeds:
   sample_demo:
-      +pre-hook: ["USE CATALOG external_sa_tables"]
+      +pre-hook: ["USE CATALOG external_sa_tables","{{ truncate_table_if_exists() }}", "DROP TABLE IF EXISTS {{ this }}"]
       +schema: "steve_d_external_tables_sandbox"
       +file_format: delta
       +location_root: s3://steve-d-databricks-demo-mount/seeds
