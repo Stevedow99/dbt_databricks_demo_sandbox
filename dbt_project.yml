@@ -69,10 +69,13 @@ models:
         +materialized: table
         +schema: aggregate_tables
 
+clean-targets:
+    - logs
+
     
 seeds:
   sample_demo:
-      +pre-hook: ["USE CATALOG external_sa_tables","{{ truncate_table_if_exists() }}", "DROP TABLE IF EXISTS {{ this }}"]
+      +pre-hook: ["USE CATALOG external_sa_tables"]
       +schema: "steve_d_external_tables_sandbox"
       +file_format: delta
       +location_root: s3://steve-d-databricks-demo-mount/seeds
