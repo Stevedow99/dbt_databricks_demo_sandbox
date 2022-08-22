@@ -10,4 +10,6 @@
 
     {% endif %}
 
+    {% do run_query("SELECT 3") %}
+
 {%- endmacro %}
