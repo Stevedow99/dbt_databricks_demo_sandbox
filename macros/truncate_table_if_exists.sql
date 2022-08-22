@@ -36,7 +36,7 @@
 
     {% if returned_results >= 1 %}
 
-        {{ log("Table exists, therefore truncating it", info=True) }}
+        {{ log("Table exists, therefore truncating it" ~ if_table_exists_query, info=True) }}
 
          {% set trunc_table_query %}
 
@@ -48,7 +48,7 @@
 
     {% else %}
 
-         {{ log("Table does not exists, no action needed", info=True) }}
+         {{ log("Table does not exists, no action needed" ~ if_table_exists_query, info=True) }}
     
     {% endif %}
 
