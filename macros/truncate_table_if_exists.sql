@@ -24,9 +24,13 @@
 
         {% set returned_results = run_query(if_table_exists_query).columns[0].values()[0] %}
 
+        {% set did_command_execute = "coommand did execute" %}
+
     {% else %}
 
         {% set returned_results = 0 %}
+
+        {% set did_command_execute = "coommand did not execute" %}
 
     {% endif %}
 
@@ -36,7 +40,7 @@
 
     {% if returned_results >= 1 %}
 
-        {{ log("Table exists, therefore truncating it" ~ if_table_exists_query, info=True) }}
+        {{ log("Table exists, therefore truncating it" ~ if_table_exists_query ~ returned_results ~ did_command_execute, info=True) }}
 
          {% set trunc_table_query %}
 
@@ -48,7 +52,7 @@
 
     {% else %}
 
-         {{ log("Table does not exists, no action needed" ~ if_table_exists_query, info=True) }}
+         {{ log("Table does not exists, no action needed" ~ if_table_exists_query ~ returned_results ~ did_command_execute, info=True) }}
     
     {% endif %}
 
