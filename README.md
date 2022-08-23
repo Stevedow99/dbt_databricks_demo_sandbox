@@ -1,5 +1,5 @@
-# dbt Snowflake Demo Project - feel free to browse around!
-The purpose of this project is to demonstrate common patterns and use cases for dbt + Snowflake!
+# dbt Databricks Demo Project - feel free to browse around!
+The purpose of this project is to demonstrate common patterns and use cases for dbt + Databricks!
 
 ## Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
